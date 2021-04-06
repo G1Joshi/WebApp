@@ -1,5 +1,5 @@
 # Flutter Web Apps
 
-## [World Time](/docs/world_time)
+## [World Time](./world_time)
 ## [Dice](/docs/dice)
-## [Ask Me Anything](/docs/ask_me_anything)
+## [Ask Me Anything](https://g1joshi.github.io/Flutter-WebApp/ask_me_anything/)
