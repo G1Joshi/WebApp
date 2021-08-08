@@ -1,4 +1,4 @@
-# Flutter Web Apps
+# Web Apps
 
 ## [World Time](./world_time)
 
@@ -9,3 +9,5 @@
 ## [News 24x7](./news_app)
 
 ## [Quiz Time](./quiz_app)
+
+## [BMI](./bmi)
