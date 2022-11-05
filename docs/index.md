@@ -11,3 +11,5 @@
 ## [Quiz Time](./quiz_app)
 
 ## [BMI](./bmi)
+
+## [Ping Pong](./ping_pong)
