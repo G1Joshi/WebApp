@@ -13,3 +13,5 @@
 ## [BMI](./bmi)
 
 ## [Ping Pong](./ping_pong)
+
+## [RxLab](./rx)
