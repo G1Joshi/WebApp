@@ -1,0 +1,40 @@
+name: Deploy
+
+inputs:
+  repo:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Test
+      shell: bash
+      run: |
+        if [ -d "app/test" ]; then
+          cd app && flutter test
+        fi
+
+    - name: Build
+      shell: bash
+      env:
+        REPO: ${{ inputs.repo }}
+      run: |
+        APP="${REPO##*/}"
+        echo "APP=$APP" >> "$GITHUB_ENV"
+        cd app && flutter build web --base-href "/$APP/" --wasm
+
+    - name: Sync
+      shell: bash
+      run: |
+        rm -rf "docs/$APP" && mkdir -p "docs/$APP"
+        cp -r app/build/web/* "docs/$APP"/
+        if ! grep -q "\./$APP" docs/index.md; then
+          echo -e "\n## [$APP](./$APP)" >> docs/index.md
+        fi
+
+    - name: Push
+      shell: bash
+      run: |
+        git add docs/
+        git commit -m "Deploy $APP" || exit 0
+        git push

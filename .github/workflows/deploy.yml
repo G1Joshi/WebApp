@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GIT_AUTHOR_NAME: ${{ vars.GIT_NAME }}
+      GIT_AUTHOR_EMAIL: ${{ vars.GIT_EMAIL }}
+      GIT_COMMITTER_NAME: ${{ vars.GIT_NAME }}
+      GIT_COMMITTER_EMAIL: ${{ vars.GIT_EMAIL }}
+      GIT_TERMINAL_PROMPT: 0
+
+    steps:
+      - name: WebApp
+        uses: actions/checkout@v7
+
+      - name: App
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ inputs.repo }}
+          path: app
+
+      - name: Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          cache: true
+
+      - name: Deploy
+        uses: ./.github/actions
+        with:
+          repo: ${{ inputs.repo }}
