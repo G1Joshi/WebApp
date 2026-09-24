@@ -15,3 +15,5 @@
 ## [Ping Pong](./ping_pong)
 
 ## [RxLab](./rx)
+
+## [Parallax](./Parallax)
