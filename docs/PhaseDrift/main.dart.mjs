@@ -345,7 +345,8 @@ class CompiledApp {
       TF: (x0,x1) => { x0.name = x1 },
       TG: (x0,x1,x2,x3) => x0.replaceState(x1,x2,x3),
       TH: (x0,x1) => x0.removeAttribute(x1),
-      TI: (handle) => clearInterval(handle),
+      TI: (ms, c) =>
+      setInterval(() => dartInstance.exports.$invokeCallback(c), ms),
       TJ: (x0,x1) => { x0.loop = x1 },
       U: (x0,x1,x2) => x0.call(x1,x2),
       UB: Function.prototype.call.bind(DataView.prototype.getFloat64),
@@ -358,8 +359,7 @@ class CompiledApp {
         return proto === Object.prototype || proto === null;
       },
       UH: x0 => x0.isConnected,
-      UI: (ms, c) =>
-      setInterval(() => dartInstance.exports.$invokeCallback(c), ms),
+      UI: () => Date.now(),
       UJ: x0 => x0.resume(),
       V: (constructor, args) => {
         const factoryFunction = constructor.bind.apply(
@@ -377,7 +377,7 @@ class CompiledApp {
       VF: (x0,x1) => x0.removeChild(x1),
       VG: o => Object.keys(o),
       VH: x0 => x0.click(),
-      VI: () => Date.now(),
+      VI: (handle) => clearInterval(handle),
       VJ: x0 => x0.play(),
       W: x0 => new Array(x0),
       WB: Function.prototype.call.bind(DataView.prototype.setFloat64),
