@@ -1,12 +1,12 @@
 {
-    "name": "phasedrift",
-    "short_name": "phasedrift",
+    "name": "PhaseDrift",
+    "short_name": "PhaseDrift",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#05060A",
     "theme_color": "#05060A",
     "description": "Two realities. One momentum.",
-    "orientation": "portrait-primary",
+    "orientation": "landscape",
     "prefer_related_applications": false,
     "icons": [
         {
